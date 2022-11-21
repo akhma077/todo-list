@@ -19,7 +19,7 @@ const EditTask = (props) => {
       todoDate: date,
     });
   };
-
+  console.log("name", name);
   return (
     <div
       style={{
@@ -31,7 +31,7 @@ const EditTask = (props) => {
     >
       <input
         type="text"
-        className="form-control"
+        className="form-control mb-2"
         name="todo"
         value={name}
         placeholder="Заголовок задачи"
@@ -39,7 +39,7 @@ const EditTask = (props) => {
       />
       <input
         type="text"
-        className="form-control"
+        className="form-control mb-2"
         name="todo"
         value={desc}
         placeholder="Описание задачи"
@@ -47,7 +47,7 @@ const EditTask = (props) => {
       />
       <input
         type={"datetime-local"}
-        className="form-control"
+        className="form-control mb-2"
         name="todo"
         value={date}
         placeholder="Дата выполнения"
@@ -56,7 +56,7 @@ const EditTask = (props) => {
       <button
         onClick={onClickSubmit}
         type="button"
-        className="btn btn-sm btn-danger mt-3"
+        className="btn btn-sm btn-danger"
       >
         готово
       </button>

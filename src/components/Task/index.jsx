@@ -1,6 +1,7 @@
 import styles from "./task.module.css";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { TbTrash } from "react-icons/tb";
+import FileUploader from "../FileUploader";
 
 export function Task({ task, onDelete, onComplete, handleEdit }) {
   return (
@@ -30,6 +31,7 @@ export function Task({ task, onDelete, onComplete, handleEdit }) {
       >
         Редактировать
       </button>
+      <FileUploader />
     </div>
   );
 }
