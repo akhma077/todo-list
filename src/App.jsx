@@ -26,16 +26,20 @@ function App() {
   }, []);
 
   function addTask(taskTitle, desc, date) {
-    setTasksAndSave([
-      ...tasks,
-      {
-        id: crypto.randomUUID(),
-        title: taskTitle,
-        todoDesc: desc,
-        todoDate: date,
-        isCompleted: false,
-      },
-    ]);
+    if (taskTitle.trim() && desc.trim() && date.trim() !== "") {
+      setTasksAndSave([
+        ...tasks,
+        {
+          id: crypto.randomUUID(),
+          title: taskTitle,
+          todoDesc: desc,
+          todoDate: date,
+          isCompleted: false,
+        },
+      ]);
+    } else {
+      alert("невозможно создать пустую задачу");
+    }
   }
 
   function deleteTaskById(taskId) {

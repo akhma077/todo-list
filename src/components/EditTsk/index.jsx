@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 const EditTask = (props) => {
-  const [name, setName] = useState(props.editingTask.newTaskName);
-  const [desc, setDesc] = useState(props.editingTask.newTaskDecs);
-  const [date, setDate] = useState(props.editingTask.newTaskDead);
+  const [name, setName] = useState(props.editingTask.title);
+  const [desc, setDesc] = useState(props.editingTask.todoDesc);
+  const [date, setDate] = useState(props.editingTask.todoDate);
   const ID = props.editingTask.id;
 
   const onChangeInput = (cb) => {
