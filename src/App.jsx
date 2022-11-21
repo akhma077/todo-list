@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import EditTask from "./components/EditTsk";
 import { Header } from "./components/Header";
 import { Tasks } from "./components/Tasks";
 
@@ -6,6 +7,7 @@ const LOCAL_STORAGE_KEY = "todo:tasks";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [editingTask, setEditingTask] = useState("");
 
   function loadSavedTasks() {
     const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -40,7 +42,9 @@ function App() {
     const newTasks = tasks.filter((task) => task.id !== taskId);
     setTasksAndSave(newTasks);
   }
-
+  const handleEdit = (id) => {
+    setEditingTask(tasks.find((x) => x.id === id));
+  };
   function toggleTaskCompletedById(taskId) {
     const newTasks = tasks.map((task) => {
       if (task.id === taskId) {
@@ -53,6 +57,13 @@ function App() {
     });
     setTasksAndSave(newTasks);
   }
+  const editTask = (id, newData) => {
+    setTasks(tasks.map((x) => (x.id === id ? { ...newData, id: id } : x)));
+    onEditTask();
+  };
+  const onEditTask = () => {
+    setEditingTask(null);
+  };
 
   return (
     <>
@@ -61,7 +72,12 @@ function App() {
         tasks={tasks}
         onDelete={deleteTaskById}
         onComplete={toggleTaskCompletedById}
+        handleEdit={handleEdit}
       />
+
+      {editingTask ? (
+        <EditTask editingTask={editingTask} editTask={editTask} />
+      ) : null}
     </>
   );
 }

@@ -2,7 +2,7 @@ import styles from "./task.module.css";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { TbTrash } from "react-icons/tb";
 
-export function Task({ task, onDelete, onComplete }) {
+export function Task({ task, onDelete, onComplete, handleEdit }) {
   return (
     <div className={styles.task}>
       <button
@@ -23,6 +23,12 @@ export function Task({ task, onDelete, onComplete }) {
       </p>
       <button className={styles.deleteButton} onClick={() => onDelete(task.id)}>
         <TbTrash size={20} />
+      </button>
+      <button
+        className="btn btn-sm btn-danger"
+        onClick={() => handleEdit(task.id)}
+      >
+        Редактировать
       </button>
     </div>
   );

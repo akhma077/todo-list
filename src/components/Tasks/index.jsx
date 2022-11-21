@@ -1,10 +1,9 @@
 import { Task } from "../Task";
 import styles from "./tasks.module.css";
 
-export function Tasks({ tasks, onDelete, onComplete }) {
+export function Tasks({ tasks, onDelete, onComplete, handleEdit }) {
   const tasksQuantity = tasks.length;
   const completedTasks = tasks.filter((task) => task.isCompleted).length;
-
   return (
     <section className={styles.tasks}>
       <header className={styles.header}>
@@ -28,6 +27,7 @@ export function Tasks({ tasks, onDelete, onComplete }) {
             task={task}
             onDelete={onDelete}
             onComplete={onComplete}
+            handleEdit={handleEdit}
           />
         ))}
       </div>
